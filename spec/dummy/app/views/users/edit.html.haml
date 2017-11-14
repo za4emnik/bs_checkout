@@ -1,0 +1,79 @@
+%main.container
+  %h1.general-title-margin=t :settings
+  %p.notice=flash[:success]
+  %ul.nav.nav-tabs.mb-20{role: "tablist"}
+    %li.mb-10.active{role: "presentation"}
+      %a{href: "#address", 'aria-controls': "address", role: "tab", 'data-toggle': "tab"}=t :address
+    %li.mb-10{role: "presentation"}
+      %a{href: "#privacy", 'aria-controls': "privacy", role: "tab", 'data-toggle': "tab"}=t :privacy
+  .tab-content
+    #address.fade.tab-pane.in.active.general-main-wrap{role: "tabpanel"}
+      .hidden-xs.hidden-sm
+        .row
+          .col-md-5
+            %h3.general-subtitle.mt-0=t :billing_address
+          .col-md-5.col-md-offset-1
+            %h3.general-subtitle.mt-0=t :shipping_address
+      .row
+        = form_for 'addresses', method: :put, url: settings_path do |f|
+          = f.fields_for @billing_address do |b|
+            .col-md-5.mb-40
+              .visible-xs.visible-sm
+                %h3.general-subtitle.mt-0=t :billing_address
+              .form-group.has-error
+              = render partial: '/checkout/fields', locals: {f: b, obj: @billing_address}
+              .text-center.general-text-align
+                = f.submit t(:save), class: "button btn btn-default"
+          = f.fields_for @shipping_address do |s|
+            .col-md-5.col-md-offset-1.mb-25
+              .visible-xs.visible-sm
+                %h3.general-subtitle.mt-0=t :shipping_address
+              .form-group.has-error
+              = render partial: '/checkout/fields', locals: {f: s, obj: @shipping_address}
+              .text-center.general-text-align
+                = f.submit t(:save), class: "button btn btn-default"
+    #privacy.tab-pane.fade{role: "tabpanel"}
+      .row.mb-60
+        .col-sm-5
+          %p.in-gold-500.font-18.mb-25=t :email
+          = form_for current_user, as: :email_form, method: :put, url: settings_path do |f|
+            .form-group.mb-35{class: add_error_class(current_user, :email)}
+              %label.control-label.font-weight-light{for: "email"}=t :enter_email
+              = f.text_field :email, {class: "form-control font-weight-light", placeholder: t(:enter_your_email), value: "#{current_user.email}"}
+              .span.help-block= show_errors(current_user, :email)
+              = f.submit t(:save), class: "btn btn-default mb-35"
+        .col-sm-5.col-sm-offset-1
+          %p.in-gold-500.font-18.mb-25=t :password
+          = form_for current_user, as: :password_form, method: :put, url: settings_path, class: "general-form-md pb-25" do |f|
+            .form-group.mb-30{class: add_error_class(current_user, :old_password)}
+              %label.control-label.font-weight-light{for: "oldPassword"}=t :old_password
+              = f.text_field :current_password, {id: "oldPassword", class: "form-control", type: 'password', placeholder: t(:old_password)}
+              .span.help-block= show_errors(current_user, :old_password)
+            .form-group.mb-30{class: add_error_class(current_user, :password)}
+              %label.control-label.font-weight-light{for: "password"}=t :new_password
+              = f.text_field :password, {id: "password", class: "form-control", type: 'password', placeholder: t(:new_password)}
+              .span.help-block= show_errors(current_user, :password)
+            .form-group.mb-40{class: add_error_class(current_user, :confirmation_password)}
+              %label.control-label.font-weight-light{for: "confirmPassword"}=t :confirm_password
+              = f.text_field :password_confirmation, {id: "confirmPassword", class: "form-control", type: 'password', placeholder: t(:confirm_password)}
+              .span.help-block= show_errors(current_user, :confirmation_password)
+            .general-text-align
+              = f.submit t(:save), class: "btn btn-default mb-10"
+        .col-sm-12
+          .divider-lg-bottom
+          %p.in-gold-500.font-18.mb-25.pt-20=t :remove_account
+          = form_for current_user, method: :delete, class: "general-form-md pb-25", url: user_path(current_user) do |f|
+            .general-settings-btn
+              = f.submit t(:please_remove_account), class: "btn disabled mb-20", disabled: true, id: 'delete-account-button'
+            .form-group.checkbox.general-settings-checkbox
+              %label.font-weight-light.pl-0
+                %input.checkbox-input{type: "checkbox", hidden: "true", id: 'understand-button'}
+                %span.checkbox-icon
+                  %i.fa.fa-check
+                %span.checkbox-text=t :understand_lost_data
+= javascript_include_tag "users.js"
+:javascript
+  $(function(){
+    var tab = "#{j (active_tab)}"
+    if(tab) $('.nav-tabs:first a[href='+tab+']').tab('show');
+  })

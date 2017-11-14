@@ -1,0 +1,16 @@
+%main.container.general-main-wrap
+  .text-center
+    %h3.general-login-title=t :log_in
+  = form_for(resource, as: resource_name, html: { class: 'general-form' }, url: session_path(resource_name)) do |f|
+    .form-group.mb-30
+      = f.label :email, class: 'control-label font-weight-light'
+      = f.email_field :email, autofocus: true, class: 'form-control', placeholder: t(:enter_email)
+    .form-group.mb-30
+      = f.label :password, class: 'control-label font-weight-light'
+      = f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: t(:password)
+    .text-center
+      = f.submit t(:log_in), class: 'btn btn-default mb-20'
+  - if devise_mapping.registerable? && controller_name != 'registrations'
+    %p.general-sign-text.text-center
+      =t :dont_have_account
+      = link_to t(:sign_up), new_registration_path(resource_name), class: 'in-gold-500'

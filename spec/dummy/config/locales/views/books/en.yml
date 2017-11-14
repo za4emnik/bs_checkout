@@ -1,0 +1,16 @@
+en:
+  back_to_results: 'Back to results'
+  add_to_cart: 'Add to cart'
+  description: 'Description'
+  year_of_publication: 'Year of publication'
+  dimensions: 'Dimensions'
+  materials: 'Materials'
+  rating: 'Rating'
+  title: 'Title'
+  post: 'Post'
+  read_more: 'Read more'
+  review: 'Review'
+  reviews:
+    zero: 'No reviews'
+    one: 'One review'
+    other: 'Reviews (%{count})'

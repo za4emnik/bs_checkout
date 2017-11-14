@@ -1,0 +1,11 @@
+%main.container.general-main-wrap
+  .text-center
+    %h3.general-login-title=t :forgot_your_password
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'general-form' }) do |f|
+    = devise_error_messages!
+    .form-group.mb-30
+      = f.label :email, class: 'control-label font-weight-light'
+      = f.email_field :email, autofocus: true, class: 'form-control'
+    .text-center
+      = f.submit t(:send_instructions), class: 'btn btn-default mb-20'
+    = render 'devise/shared/links'

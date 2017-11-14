@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %meta{charset: "UTF-8"}
+    %meta{name: "viewport", content: "width=device-width"}
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title BookStore
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %link{href: "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600", rel: "stylesheet"}
+  %body
+    = render :partial => '/layouts/header'
+    %div.container
+      %p.notice= notice
+      %p.alert= alert
+    = yield
+    = render :partial => '/layouts/footer'
+    %script{src: "https://use.fontawesome.com/67602d7308.js"}
