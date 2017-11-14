@@ -60,10 +60,10 @@ RSpec.describe BsCheckout::StepUpdateService do
 
   context '#payment' do
     before do
-      allow(subject).to receive(:cart_params).and_return(cart)
+      allow(subject).to receive(:credit_card_params).and_return(credit_card)
     end
 
-    let(:cart) { FactoryGirl.attributes_for(:cart) }
+    let(:credit_card) { FactoryGirl.attributes_for(:credit_card) }
     let(:order) { FactoryGirl.create(:order) }
     subject { BsCheckout::StepUpdateService.new(:address, order, {}, 'session') }
 
@@ -72,7 +72,7 @@ RSpec.describe BsCheckout::StepUpdateService do
     end
 
     it 'should return CartForm object' do
-      expect(subject.payment).to be_a_kind_of(BsCheckout::CartForm)
+      expect(subject.payment).to be_a_kind_of(BsCheckout::CreditCardForm)
     end
   end
 

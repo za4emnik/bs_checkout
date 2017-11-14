@@ -57,13 +57,13 @@ module FeatureHelpModule
   end
 
   def payment
-    cart = FactoryGirl.attributes_for(:cart)
+    credit_card = FactoryGirl.attributes_for(:credit_card)
     visit bs_checkout.checkout_path(:payment)
-    within '#new_cart_form' do
-      fill_in 'cart_form[number]', with: cart[:number]
-      fill_in 'cart_form[name]', with: cart[:name]
-      fill_in 'cart_form[date]', with: cart[:date]
-      fill_in 'cart_form[cvv]', with: cart[:cvv]
+    within '#new_credit_card_form' do
+      fill_in 'credit_card_form[number]', with: credit_card[:number]
+      fill_in 'credit_card_form[name]', with: credit_card[:name]
+      fill_in 'credit_card_form[date]', with: credit_card[:date]
+      fill_in 'credit_card_form[cvv]', with: credit_card[:cvv]
       click_button(I18n.t(:save_and_continue), match: :first)
     end
   end

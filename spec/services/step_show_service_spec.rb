@@ -57,12 +57,12 @@ RSpec.describe BsCheckout::StepShowService do
     subject { BsCheckout::StepShowService.new(:address, order, 'session') }
 
     it 'should set order to form' do
-      allow_any_instance_of(BsCheckout::CartForm).to receive(:order).and_return(order)
+      allow_any_instance_of(BsCheckout::CreditCardForm).to receive(:order).and_return(order)
       expect(subject.payment.order).to eq(order)
     end
 
     it 'should return CartForm instance' do
-      expect(subject.payment).to be_a_kind_of(BsCheckout::CartForm)
+      expect(subject.payment).to be_a_kind_of(BsCheckout::CreditCardForm)
     end
   end
 

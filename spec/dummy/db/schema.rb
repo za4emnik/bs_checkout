@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109190943) do
+ActiveRecord::Schema.define(version: 20171114163033) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -38,17 +38,6 @@ ActiveRecord::Schema.define(version: 20171109190943) do
     t.index ["country_id"], name: "index_bs_checkout_addresses_on_country_id"
   end
 
-  create_table "bs_checkout_carts", force: :cascade do |t|
-    t.string   "number"
-    t.string   "name"
-    t.string   "date"
-    t.integer  "cvv"
-    t.integer  "order_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_bs_checkout_carts_on_order_id"
-  end
-
   create_table "bs_checkout_countries", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -63,6 +52,17 @@ ActiveRecord::Schema.define(version: 20171109190943) do
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.index ["order_id"], name: "index_bs_checkout_coupons_on_order_id"
+  end
+
+  create_table "bs_checkout_credit_cards", force: :cascade do |t|
+    t.string   "number"
+    t.string   "name"
+    t.string   "date"
+    t.integer  "cvv"
+    t.integer  "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_bs_checkout_credit_cards_on_order_id"
   end
 
   create_table "bs_checkout_deliveries", force: :cascade do |t|

@@ -1,5 +1,5 @@
 module BsCheckout
-  class Cart < ApplicationRecord
+  class CreditCard < ApplicationRecord
     belongs_to :order
   end
 end

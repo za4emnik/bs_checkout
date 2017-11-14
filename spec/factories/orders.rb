@@ -4,6 +4,6 @@ FactoryGirl.define do
     subtotal 200
     association :user
     association :delivery
-    association :cart
+    association :credit_card
   end
 end

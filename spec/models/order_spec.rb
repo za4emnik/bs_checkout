@@ -4,7 +4,7 @@ require 'aasm/rspec'
 RSpec.describe BsCheckout::Order, type: :model do
   describe 'associations' do
     it { should have_one(:coupon) }
-    it { should have_one(:cart) }
+    it { should have_one(:credit_card) }
     it { should have_many(:order_items) }
     it { should belong_to(:user) }
     it { should belong_to(:delivery) }

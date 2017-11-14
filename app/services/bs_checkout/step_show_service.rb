@@ -27,8 +27,8 @@ module BsCheckout
     end
 
     def payment
-      @order.cart ||= Cart.new
-      form = CartForm.new(@order.cart.attributes)
+      @order.credit_card ||= CreditCard.new
+      form = CreditCardForm.new(@order.credit_card.attributes)
       form.order = @order
       form
     end

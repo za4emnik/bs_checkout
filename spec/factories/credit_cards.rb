@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :cart, class: BsCheckout::Cart do
+  factory :credit_card, class: BsCheckout::CreditCard do
     number '12345678901234567'
     name { FFaker::NatoAlphabet.alphabetic_code }
     date '11/18'
