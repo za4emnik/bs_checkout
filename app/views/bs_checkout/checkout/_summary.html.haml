@@ -1,0 +1,14 @@
+- order ||= current_order
+- order = order.decorate
+%tr
+  %td
+    %p.font-16=t :item_total
+  %td
+    %p.font-16 €#{order.subtotal}
+= order.summary_coupon
+= order.summary_delivery
+%tr
+  %td
+    %p.font-16=t :order_total
+  %td
+    %p.font-16 €#{ order.show_total }
