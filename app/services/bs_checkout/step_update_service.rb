@@ -42,7 +42,8 @@ module BsCheckout
     private
 
     def address_params(type)
-      @params.require(:address_form).require(type).permit(:first_name, :last_name, :address, :city, :zip, :phone, :country_id, :use_billing_address)
+      params = %i[:first_name, :last_name, :address, :city, :zip, :phone, :country_id, :use_billing_address]
+      @params.require(:address_form).require(type).permit(params)
     end
 
     def credit_card_params

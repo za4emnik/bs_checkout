@@ -14,13 +14,24 @@ module BsCheckout
     def delete_button(item)
       if checkout_index_page?
         h.content_tag :td do
-          h.content_tag(:a, h.content_tag(:span, '&times;'.html_safe, 'aria-hidden': 'true'), class: 'close general-cart-close', href: context.order_item_path(item.id), 'aria-label': 'Close', 'data-method': 'delete')
+          span = h.content_tag(:span, '&times;'.html_safe, 'aria-hidden': 'true')
+          attributes = delete_button_attributes(item)
+          h.content_tag(:a, span, attributes)
         end
       end
     end
 
     def show_subtotal
       model.quantity * model.product.price
+    end
+
+    private
+
+    def delete_button_attributes(item)
+      link_class = 'close general-cart-close'
+      link = context.order_item_path(item.id)
+      attributes = { 'aria-label': 'Close', 'method': 'delete' }
+      { class: link_class, href: link, data: attributes }
     end
   end
 end
