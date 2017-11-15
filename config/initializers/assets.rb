@@ -1,1 +1,1 @@
-Rails.application.config.assets.precompile += %w( bs_checkout/checkout.js )
+Rails.application.config.assets.paths << BsCheckout::Engine.root.join('node_modules')
