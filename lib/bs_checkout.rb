@@ -1,5 +1,7 @@
-require "bs_checkout/engine"
+require 'bs_checkout/engine'
+require 'devise'
 
 module BsCheckout
-  # Your code goes here...
+  mattr_accessor :user_class
+  mattr_accessor :product_class
 end

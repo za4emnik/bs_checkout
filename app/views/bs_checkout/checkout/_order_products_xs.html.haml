@@ -1,0 +1,26 @@
+- obj ||= current_order
+- obj = obj.decorate(context: self)
+- obj.order_items.each do |item|
+  .general-cart-item.divider-lg-bottom
+    %button.close.general-cart-close{type: "button", 'aria-label': "Close"}
+      %span{'aria-hidden': "true"} &times;
+    .general-img-wrap-table
+      %img.cart-img-shadow.width-full{src: "#{item.product.image}", alt: "#{item.product.title}"}
+    %p.general-title #{item.product.title}
+    %table.table
+      %tr
+        %td
+          %span.in-grey-600 =t :price
+        %td
+          %span.font-16.in-gold-500 €#{item.product.price}
+      %tr
+        %td.vertical-middle
+          %span.in-grey-600=t :quantity
+        %td
+          = fields_for 'order_items[]', item do |field|
+            =item.quantity_field(field, item)
+      %tr
+        %td
+          %span.in-grey-600=t :subtotal
+        %td
+          %span.font-16.in-gold-500 €#{item.show_subtotal}

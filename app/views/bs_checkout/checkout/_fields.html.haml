@@ -1,0 +1,34 @@
+- obj = BsCheckout::AddressDecorator.decorate(obj)
+.form-group{class: add_error_class(obj, :first_name)}
+  = f.label :first_name, {class: "control-label font-weight-light", value: t(:first_name)}
+  = f.text_field :first_name, {class: "form-control", placeholder: t(:first_name)}
+  .span.help-block= show_errors(obj, :first_name)
+
+.form-group{class: add_error_class(obj, :last_name)}
+  = f.label :last_name, {class: "control-label font-weight-light", value: t(:last_name)}
+  = f.text_field :last_name, {class: "form-control", placeholder: t(:last_name)}
+  .span.help-block= show_errors(obj, :last_name)
+
+.form-group{class: add_error_class(obj, :address)}
+  = f.label :address, {class: "control-label font-weight-light", value: t(:address)}
+  = f.text_field :address, {class: "form-control", placeholder: t(:address)}
+  .span.help-block= show_errors(obj, :address)
+
+.form-group{class: add_error_class(obj, :city)}
+  = f.label :city, {class: "control-label font-weight-light", value: t(:city)}
+  = f.text_field :city, {class: "form-control", placeholder: t(:city)}
+  .span.help-block= show_errors(obj, :city)
+
+.form-group{class: add_error_class(obj, :zip)}
+  = f.label :zip, {class: "control-label font-weight-light", value: t(:zip)}
+  = f.text_field :zip, {class: "form-control", placeholder: t(:zip)}
+  .span.help-block= show_errors(obj, :zip)
+
+.form-group{class: add_error_class(obj, :country_id)}
+  = f.collection_select(:country_id, BsCheckout::Country.all, :id, :name, {include_blank: t(:nothing_selected), selected: obj.show_selected_value, disabled: t(:nothing_selected)}, { id: "country", class: "form-control"})
+  .span.help-block= show_errors(obj, :country_id)
+
+.form-group.mb-60{class: add_error_class(obj, :phone)}
+  = f.label :phone, {class: "control-label font-weight-light", value: t(:phone)}
+  = f.text_field :phone, {class: "form-control", placeholder: t(:example_phone)}
+  .span.help-block= show_errors(obj, :phone)

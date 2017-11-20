@@ -1,0 +1,10 @@
+#{obj.full_name}
+= @form ? @form.decorate(context: self).edit_link : nil
+%br
+#{obj.address}
+%br
+#{obj.city} #{obj.zip}
+%br
+#{obj.country.name}
+%br
+#{t(:phone)} #{obj.phone}

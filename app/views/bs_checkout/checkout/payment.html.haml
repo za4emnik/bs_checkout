@@ -1,0 +1,31 @@
+%main.container.mb-res-50
+  = render partial: '/bs_checkout/checkout/steps'
+  %h3.general-subtitle Credit Card
+  = form_for @form, url: wizard_path, class: "max-600 mb-80", method: :put do |f|
+    .form-group{class: add_error_class(@form, :number)}
+      = f.label :number, {class: "control-label font-weight-light", value: t(:card_number)}
+      = f.text_field :number, {class: "form-control", placeholder: t(:card_number)}
+      .span.help-block= show_errors(@form, :number)
+    .row
+      .col-sm-6
+        .form-group{class: add_error_class(@form, :name)}
+          = f.label :name, {class: "control-label font-weight-light", value: t(:name_on_card)}
+          = f.text_field :name, {class: "form-control", placeholder: t(:name_on_card)}
+          .span.help-block= show_errors(@form, :name)
+      .col-sm-3
+        .form-group{class: add_error_class(@form, :date)}
+          = f.label :date, {class: "control-label font-weight-light", value: t(:date_format)}
+          = f.text_field :date, {class: "form-control", placeholder: t(:date_format)}
+          .span.help-block= show_errors(@form, :date)
+      .col-sm-3
+        .form-group{class: "relative #{add_error_class(@form, :cvv)}"}
+          = f.label :cvv, {class: "control-label font-weight-light", value: t(:cvv)}
+          = f.text_field :cvv, {class: "form-control", placeholder: t(:cvv)}
+          %i.fa.fa-question-circle.general-form-help.font-18{title: t(:cvv_help)}
+          .span.help-block= show_errors(@form, :cvv)
+    .general-text-align
+      %p.in-gold-500.font-18=t :order_summary
+      %table.general-summary-table
+        = render partial: '/bs_checkout/checkout/summary'
+    .text-center
+      = f.submit t(:save_and_continue), class: "btn btn-primary center-block mb-20"

@@ -1,0 +1,54 @@
+en:
+  order_summary: 'Order Summary'
+  price: 'Price'
+  quantity: 'Quantity'
+  subtotal: 'SubTotal'
+  sort_by: 'Sort by'
+  address: 'Address'
+  billing_address: 'Billing Address'
+  shipping_address: 'Shipping Address'
+  order_summary: 'Order Summary'
+  order: 'Order'
+  shipments: 'Shipments'
+  settings: 'Settings'
+  log_in: 'Log in'
+  sign_up: 'Sign Up'
+  admin:
+    actions:
+      change_state:
+        menu: 'Change state'
+        title: 'Change state'
+        breadcrumb: 'Change state'
+        flash:
+          success: 'State updated successfully!'
+          error: 'Something went wrong :('
+      in_progress_tab:
+        menu: 'In progress'
+        title: 'In progress orders'
+        breadcrumb: 'In progress orders'
+      delivered_tab:
+        menu: 'Delivered'
+        title: 'Delivered orders'
+        breadcrumb: 'Delivered orders'
+      cancelled_tab:
+        menu: 'Cancelled'
+        title: 'Cancelled orders'
+        breadcrumb: 'Cancelled orders'
+      change_to_approved:
+        menu: 'Approve review'
+        flash:
+          success: 'Review approved!'
+          error: 'Something went wrong :('
+      change_to_rejected:
+        menu: 'Reject review'
+        flash:
+          success: 'Review rejected!'
+          error: 'Something went wrong :('
+      new_tab_review:
+        menu: 'New reviews'
+        title: 'New reviews'
+        breadcrumb: 'New reviews'
+      process_tab_review:
+        menu: 'Processed reviews'
+        title: 'Processed reviews'
+        breadcrumb: 'Processed reviews'

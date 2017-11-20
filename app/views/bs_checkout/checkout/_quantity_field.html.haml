@@ -1,0 +1,6 @@
+.input-group
+  %div.input-link.dec.button{id: "dec-#{item.id}", onclick: "inc_dec('-', this)"}
+    %i.fa.fa-minus.line-height-40
+  = field.text_field :quantity, class: "form-control quantity-input", min: 1, value: "#{item.quantity}", 'data-quantity-item-id' => item.id
+  %div.input-link.inc.button{id: "inc-#{item.id}", onclick: "inc_dec('+', this)"}
+    %i.fa.fa-plus.line-height-40

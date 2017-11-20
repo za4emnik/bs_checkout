@@ -1,0 +1,35 @@
+%main.container
+  = render partial: '/bs_checkout/checkout/steps'
+  = form_for @form, url: wizard_path, method: :put do |f|
+    .hidden-xs.hidden-sm
+      .row
+        .col-md-5
+          %h3.general-subtitle=t :billing_address
+          %p.general-info-text=t :fields_required
+        .col-md-5.col-md-offset-1
+          %h3.general-subtitle=t :shipping_address
+    .row
+      .col-md-5.mb-40
+        .visible-xs.visible-sm
+          %h3.general-subtitle=t :billing_address
+          %p.general-info-text=t :fields_required
+        = f.fields_for @form.billing_address do |b|
+          = render partial: '/bs_checkout/checkout/fields', locals: {f: b, obj: @form.billing_address}
+      .col-md-5.col-md-offset-1.mb-60
+        .visible-xs.visible-sm
+          %h3.general-subtitle=t :shipping_address
+        #shipping_address_form
+          = f.fields_for @form.shipping_address do |s|
+            = render partial: '/bs_checkout/checkout/fields', locals: {f: s, obj: @form.shipping_address}
+        .form-group.checkbox
+          %label.font-weight-light.pl-0
+            = f.fields_for @form.shipping_address do |s|
+              = s.check_box :use_billing_address, onclick: 'hide_block(this)', hidden: true, class: 'checkbox-input'
+              %span.checkbox-icon
+                %i.fa.fa-check
+              %span.checkbox-text=t :use_billing_address
+    .general-text-align.mb-60
+      %p.in-gold-500.font-18=t :order_summary
+      %table.general-summary-table
+        = render partial: '/bs_checkout/checkout/summary'
+        = f.submit t(:save_and_continue), class: "btn btn-primary center-block mb-20"

@@ -1,0 +1,10 @@
+en:
+  catalog: 'Сatalog'
+  view_more: 'View More'
+  title_a_z: 'Title a z'
+  title_z_a: 'Title z a'
+  newest_first: 'Newest first'
+  popular_first: 'Popular first'
+  price_low_hight: 'Price low to hight'
+  price_hight_low: 'Price hight to low'
+  filter_by_category: 'Filter by category'

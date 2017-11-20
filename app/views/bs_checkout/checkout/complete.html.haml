@@ -1,0 +1,25 @@
+%main.container.general-main-wrap
+  = render partial: '/bs_checkout/checkout/steps'
+  .text-center.mb-40
+    %h3.general-subtitle=t :thank_for_order
+    %p.font-weight-light=t :confirmation_sent, email: current_user.email
+  .row.mb-20
+    .col-sm-6
+      .visible-xs
+        %p.general-order-number.mb-0 #{t(:order)} # #{@form.number}
+        %p.general-address.mb-30 #{@form.updated_at.strftime('%B %-d %C')}
+      %p.general-address
+        = render partial: '/bs_checkout/checkout/address', locals: { obj: @form.billing_address }
+    .col-sm-6.hidden-xs.text-right
+      %p.general-order-number.mb-0 #{t(:order)} # #{@form.number}
+      %p.general-address.mb-30 #{@form.updated_at.strftime('%B %-d %Y')}
+  .visible-xs
+    = render partial: '/bs_checkout/checkout/order_products_xs', locals: { obj: @form }
+  .hidden-xs.divider-lg.pt-20
+    = render partial: '/bs_checkout/checkout/order_products_md', locals: { obj: @form }
+  .text-center.general-text-right
+    %p.in-gold-500.font-18=t :order_summary
+    %table.general-summary-table.general-summary-table-right.general-text-right
+      = render partial: '/bs_checkout/checkout/summary', locals: {order: @form}
+  .text-center
+    = button_to t(:back_to_store), wizard_path(:complete), {method: :put, class: "btn btn-default mb-20"}

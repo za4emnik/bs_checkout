@@ -1,0 +1,11 @@
+inherit_from: '../.rubocop.yml'
+Lint/ParenthesesAsGroupedExpression:
+  Enabled: false
+Metrics/BlockLength:
+  Max: 210
+Metrics/LineLength:
+  Max: 195
+Metrics/AbcSize:
+  Max: 37
+Style/NumericLiterals:
+  Enabled: false

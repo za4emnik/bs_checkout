@@ -1,0 +1,13 @@
+{
+  "name": "bs_checkout",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/za4emnik/bs_checkout.git",
+  "author": "za4emnik <maxots@rambler.ru>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "bootstrap-sass": "3.3.7",
+    "jquery": "^2.2.0"
+  }
+}
